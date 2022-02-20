@@ -18,7 +18,8 @@ static double[] longitudes = new double[512];
 static double[] elevations = new double[512];
 //this truncates all doubles to 6 digits after the decimal point
 static DecimalFormat df = new DecimalFormat("#.######");
-
+    
+    //main entry point into program
     public static void main(String[] args) throws IOException {
 
         try {
