@@ -3,8 +3,8 @@ import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Scanner;
-import java.math.BigDecimal;
 
 public class elevationTool {
 static double searchSizeLat;
@@ -16,6 +16,8 @@ static Scanner sc;
 static double[] latitudes = new double[512];
 static double[] longitudes = new double[512];
 static double[] elevations = new double[512];
+//this truncates all doubles to 6 digits after the decimal point
+static DecimalFormat df = new DecimalFormat("#.######");
 
     public static void main(String[] args) throws IOException {
 
@@ -56,6 +58,11 @@ static double[] elevations = new double[512];
         for (int i = 0; i <= 256; i++) {
             longitudes[256 - i] = longitude - i * searchSizeLong / 256;
             latitudes[256 - i] = latitude - i * searchSizeLat / 256;
+        }
+        for (int i = 0; i < 512; i++) {
+            longitudes[i] = Double.parseDouble(df.format(longitudes[i]));
+            latitudes[i] = Double.parseDouble(df.format(latitudes[i]));
+
         }
 
         //Forming coordinate string for API call
