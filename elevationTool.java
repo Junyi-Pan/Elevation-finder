@@ -30,7 +30,7 @@ static double[] elevations = new double[512];
         sc = new Scanner(System.in);
         System.out.println("This program finds the highest and lowest elevated points within 0.01 decimal degrees of a supplied point.");
         System.out.print("Enter latitude in decimal degrees: ");
-        latitude = sc.nextFloat();
+        latitude = sc.nextDouble();
 
         //error checking
         if (latitude < -90 + searchSizeLat || latitude > 90 - searchSizeLat) {
@@ -39,7 +39,7 @@ static double[] elevations = new double[512];
         }
 
         System.out.print("Enter longitude in decimal degrees: ");
-        longitude = sc.nextFloat();
+        longitude = sc.nextDouble();
 
         //error checking
         if (longitude < -180 + searchSizeLong || longitude > 180 - searchSizeLong) {
@@ -69,6 +69,7 @@ static double[] elevations = new double[512];
 
         //array API call
         URL url = new URL("https://maps.googleapis.com/maps/api/elevation/json?locations=" + coordinateString + "&key=" + apiKey);
+        System.out.println(url);
 
         //Processing API data returned (this is messy but we're not good at regex :(
         String[] stringData;
