@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
+import java.math.BigDecimal;
 
 public class elevationTool {
 static double searchSizeLat;
