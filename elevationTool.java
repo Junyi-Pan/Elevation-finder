@@ -18,13 +18,12 @@ static double[] longitudes = new double[512];
 static double[] elevations = new double[512];
 //this truncates all doubles to 6 digits after the decimal point
 static DecimalFormat df = new DecimalFormat("#.######");
-    
-    //main entry point into program
+
     public static void main(String[] args) throws IOException {
 
         try {
-            searchSizeLat = (Double.parseDouble(args[1]))/2;
-            searchSizeLong = (Double.parseDouble(args[2]))/2;
+            searchSizeLat = (Double.parseDouble(args[0]))/2;
+            searchSizeLong = (Double.parseDouble(args[1]))/2;
         } catch (Exception e) {
             searchSizeLat = 0.005;
             searchSizeLong = 0.005;
@@ -78,7 +77,6 @@ static DecimalFormat df = new DecimalFormat("#.######");
 
         //array API call
         URL url = new URL("https://maps.googleapis.com/maps/api/elevation/json?locations=" + coordinateString + "&key=" + apiKey);
-        System.out.println(url);
 
         //Processing API data returned (this is messy but we're not good at regex :(
         String[] stringData;
